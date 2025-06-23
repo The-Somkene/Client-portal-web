@@ -3,6 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  background-color: linear-gradient(to right, #CDC5FA, #FFFFFF);
 }
 
 @theme inline {
@@ -21,6 +22,7 @@
 
 body {
   background: var(--background);
+  /* background-color: linear-gradient(to right, #CDC5FA, #FFFFFF); */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
