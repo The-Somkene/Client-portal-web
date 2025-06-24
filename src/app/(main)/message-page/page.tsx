@@ -1,6 +1,8 @@
 const Message = () => {
   return (
-    <div>page</div>
+    <section className="mt-12">
+
+    </section>
   )
 }
 

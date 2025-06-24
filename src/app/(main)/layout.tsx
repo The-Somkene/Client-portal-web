@@ -31,9 +31,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <main className="bg-[#EAE8F7] min-h-screen">
-          <div className="container mx-auto flex gap-6">
+          <div className="max-w-[1600px] mx-auto flex gap-6">
             <Sidebar />
-            <div className="mt-[22px] w-[1260px]">
+            <div className="mt-[22px] w-[1260px] ml-[20rem]">
               <Navbar />
               {children}
             </div>

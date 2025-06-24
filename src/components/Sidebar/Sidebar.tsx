@@ -3,12 +3,12 @@ import Image from "next/image";
 function Sidebar() {
   return (
     <>
-      <aside className="w-[17.5%] p-6 flex flex-col space-y-6 top-0 left-0">
-        <div className="bg-black px-8 py-2 h-16 rounded-xl w-[15rem] flex items-center justify-center overflow-hidden">
+      <aside className="w-[17.5%] py-6 flex flex-col space-y-6 fixed top-0 left-0 ml-[2rem]">
+        <div className="bg-black px-8 py-2 h-16 rounded-xl  flex items-center justify-center overflow-hidden">
           <Image src="/logo.png" alt="Nexoris Logo" width={150} height={150} />
         </div>
 
-        <div className="bg-white w-[15rem] py-6 rounded-xl px-4 flex flex-col gap-4">
+        <div className="bg-white  py-6 rounded-xl px-4 flex flex-col gap-4">
           {/* <div className="flex items-end justify-end">
             <Image src="/Arrow - Up Circle.svg" alt="" width={30} height={30} />
           </div> */}

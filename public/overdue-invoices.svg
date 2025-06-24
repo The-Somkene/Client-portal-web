@@ -1,0 +1,14 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="16" cy="16" rx="16" ry="15.5" fill="#EAE8F7"/>
+<g clip-path="url(#clip0_799_3997)">
+<path d="M18.7929 22.2071C18.6054 22.3946 18.351 22.5 18.0858 22.5H13.9142C13.649 22.5 13.3946 22.3946 13.2071 22.2071L9.79289 18.7929C9.60536 18.6054 9.5 18.351 9.5 18.0858V13.9142C9.5 13.649 9.60536 13.3946 9.79289 13.2071L13.2071 9.79289C13.3946 9.60536 13.649 9.5 13.9142 9.5H18.0858C18.351 9.5 18.6054 9.60536 18.7929 9.79289L22.2071 13.2071C22.3946 13.3946 22.5 13.649 22.5 13.9142V18.0858C22.5 18.351 22.3946 18.6054 22.2071 18.7929L18.7929 22.2071Z" stroke="#543CDA" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 13V16.25" stroke="#543CDA" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 19C15.8619 19 15.75 18.8881 15.75 18.75C15.75 18.6119 15.8619 18.5 16 18.5" stroke="#543CDA" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 19C16.1381 19 16.25 18.8881 16.25 18.75C16.25 18.6119 16.1381 18.5 16 18.5" stroke="#543CDA" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_799_3997">
+<rect width="14" height="14" fill="white" transform="translate(9 9)"/>
+</clipPath>
+</defs>
+</svg>

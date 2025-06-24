@@ -2,8 +2,8 @@ import Image from "next/image";
 
 function Header() {
   return (
-    <>
-      <div className="nav-links bg-[#FFFFFF] flex rounded-[10px] align-center justify-between w-full h-16 shadow-[1px_1px_2px_rgba(0,0,0,0.1)]">
+    <nav className="bg-[#EAE8F7] sticky top-0 py-1">
+      <div className="nav-links bg-[#FFFFFF] flex rounded-[10px] align-center justify-between w-full h-16 shadow-[1px_1px_2px_rgba(0,0,0,0.1)] ">
         <div className="flex gap-20 items-center ml-[36px]">
           <h1 className=" font-semibold text-[17px] text-black">Overview</h1>
           <div className="search my-[10px]">
@@ -36,7 +36,7 @@ function Header() {
           </span>
         </div>
       </div>
-    </>
+    </nav>
   );
 }
 
