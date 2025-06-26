@@ -1,5 +1,19 @@
 import Image from "next/image";
 
+const statusStyles = {
+  Pending: "text-[#F8A72D]",
+  Overdue: "text-[#C43131]",
+  Paid: "text-[#00D073]",
+};
+
+const milestone = [
+  { status: "Pending" },
+  { status: "Pending" },
+  { status: "Overdue" },
+  { status: "Paid" },
+  { status: "Paid" },
+];
+
 const Payments = () => {
   return (
     <section className="mt-12">
@@ -97,44 +111,62 @@ const Payments = () => {
           </span>
         </div>
       </div>
-      <section>
-        <table>
-          <thead>
-            <tr>
-              <th className="font-semibold text-sm text-black">Invoice #</th>
-              <th className="font-semibold text-sm text-black">Amount</th>
-              <th className="font-semibold text-sm text-black">Client</th>
-              <th className="font-semibold text-sm text-black">Project</th>
-              <th className="font-semibold text-sm text-black">Milestone</th>
-              <th className="font-semibold text-sm text-black">Status</th>
-              <th className="font-semibold text-sm text-black">Date</th>
-              <th className="font-semibold text-sm text-black">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>INV-104</td>
-              <td>#250,000</td>
-              <td>Tayo Wellens</td>
-              <td>Food Delivery Website</td>
-              <td>Wireframe Design</td>
-              <td>
-                <p>Pending Confirmation</p>
-              </td>
-              <td>Feb 1, 2025</td>
-              <td>
-                {" "}
-                <Image
-                  src="/bullet-list-points.svg"
-                  alt=""
-                  width={18}
-                  height={14}
-                />{" "}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+
+      <div className="py-4 rounded-[7px] space-y-4">
+        {/* Independent table header */}
+        <div className="overflow-hidden rounded-[7px] border-1 border-[#543CDA4D]">
+          <table className="w-full  text-left">
+            <thead>
+              <tr className="bg-[#543CDA1A] text-[#543CDA] font-semibold text-sm">
+                <th className="py-6 px-6">Invoice #</th>
+                <th className="py-6 px-6">Amount</th>
+                <th className="py-6 px-6">Client</th>
+                <th className="py-6 px-6">Project</th>
+                <th className="py-6 px-6">Milestone</th>
+                <th className="py-6 px-6">Status</th>
+                <th className="py-6 px-6">Date</th>
+                <th className="py-6 px-6 ">Actions</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        {/* Independent table body */}
+        <div className="space-y-2">
+          {milestone.map((d, idx) => (
+            <div
+              key={idx}
+              className="grid grid-cols-8 bg-white shadow rounded-[7px] font-semibold text-[10px] text-black hover:bg-gray-50 transition"
+            >
+              <div className="py-5 px-6">INV-104</div>
+              <div className="py-5 px-5 ml-5">#250,000</div>
+              <div className="py-5 px-5 ml-4">Tayo Wellens</div>
+              <div className="py-5 px-5 ml-0">Food Delivery Website</div>
+              <div className="py-5 px-5 ml-2">Wireframe Design</div>
+              <div className="py-5 px-5 ml-5">
+                <span
+                  className={`px-5 py-5 rounded-[4px] w-[20ch] ${
+                    statusStyles[d.status]
+                  }`}
+                >
+                  {d.status}
+                </span>
+              </div>
+              <div className="py-5 px-5 ml-6">Feb 1, 2025</div>
+              <div className="py-5 px-5 text-xl cursor-pointer ml-3">
+                <span>
+                  <Image
+                    src="/bullet-list-points.svg"
+                    alt=""
+                    width={14}
+                    height={14}
+                  />
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };

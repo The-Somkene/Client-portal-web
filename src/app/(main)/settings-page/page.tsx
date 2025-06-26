@@ -18,8 +18,14 @@ const Settings = () => {
             placeholder="password"
             className="bg-[#EAE8F7] px-10 py-6 rounded-sm border-b-3 border-b-[#543CDA] placeholder:text-black text-xs outline-none"
           />
-          <label htmlFor="" className="text-[#543CDA] font-semibold text-[16px]">Two-Factor Authentication</label>
+          {/* <label htmlFor="" className="text-[#543CDA] font-semibold text-[16px]">Two-Factor Authentication</label> */}
         </form>
+        <div className="switch-container">
+          <h1 className="text-[#543CDA] font-semibold text-[16px]">Two-Factor Authentication</h1>
+          <label className="switch">
+            <input type="checkbox" className=""/>
+          </label>
+        </div>
       </div>
       <div className="box2 text-black bg-white mt-6.5 mb-32 px-10 py-8 rounded-[10px] border-l-10 border-l-[#543CDA]">
         <p className="font-medium text-lg mb-8.5">Notification Preferences</p>

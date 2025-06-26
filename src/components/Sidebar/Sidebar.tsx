@@ -4,11 +4,11 @@ function Sidebar() {
   return (
     <>
       <aside className="w-[17.5%] py-6 flex flex-col space-y-6 fixed top-0 left-0 ml-[2rem]">
-        <div className="bg-black px-8 py-2 h-16 rounded-xl  flex items-center justify-center overflow-hidden">
+        <div className="bg-white px-8 py-2 h-16 rounded-[10px]  flex items-center justify-center overflow-hidden">
           <Image src="/logo.png" alt="Nexoris Logo" width={150} height={150} />
         </div>
 
-        <div className="bg-white  py-6 rounded-xl px-4 flex flex-col gap-4">
+        <div className="bg-white  py-6 rounded-[10px] px-4 flex flex-col gap-4">
           {/* <div className="flex items-end justify-end">
             <Image src="/Arrow - Up Circle.svg" alt="" width={30} height={30} />
           </div> */}
@@ -182,7 +182,7 @@ function Sidebar() {
           </nav>
 
           <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-4 border border-[#553bd96d] px-4 py-3 rounded-xl">
+            <div className="flex items-center gap-4 border border-[#553bd96d] px-4 py-3 rounded-[7px]">
               <Image src="/Profile-pic.svg" alt="" width={40} height={40} />
               <div className="">
                 <h2 className="text-[#543CDA] font-semibold text-lg">
@@ -194,7 +194,7 @@ function Sidebar() {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 px-4 py-4 border border-red-400 hover:bg-red-500 text-red-600 hover:text-white rounded-xl cursor-pointer group">
+            <div className="flex items-center gap-4 px-4 py-4 border border-red-400 hover:bg-red-500 text-red-600 hover:text-white rounded-[5px] cursor-pointer group">
               <span>
                 <Image
                   src="/logout-1.svg"

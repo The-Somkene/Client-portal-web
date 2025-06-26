@@ -69,7 +69,7 @@ const Profile = () => {
           </p>
         </div>
       </div>
-      <div className="mt-7 bg-white px-9.5 py-7 rounded-[10px] border-l-10 border-l-[#543CDA]">
+      <div className="mt-7 mb-32 bg-white px-9.5 py-7 rounded-[10px] border-l-10 border-l-[#543CDA]">
         <div className="flex justify-between items-center">
           <h2 className="font-semibold text-[32px] text-black">
             Personal Information
@@ -85,47 +85,47 @@ const Profile = () => {
           </div>
         </div>
         <div className="flex py-4.25">
-          <div className="first flex flex-col gap-1 text-black">
-            <>
+          <div className="first flex flex-col gap-7 text-black">
+            <div className="flex flex-col gap-1">
               <h3 className="font-medium text-[20px]">First Name</h3>
               <p className="font-normal text-[16px]">Toluwani</p>
-            </>
-            <>
+            </div>
+            <div className="flex flex-col gap-1">
               <h3 className="font-medium text-[20px]">Email Address</h3>
-              <p className="font-normal text-[16px]">toluayomide@gmail.com</p>
-            </>
-            <>
+              <p className="font-normal text-[16px] underline">toluayomide@gmail.com</p>
+            </div>
+            <div className="flex flex-col gap-1">
               <h3 className="font-medium text-[20px]">Country</h3>
               <p className="font-normal text-[16px]">Nigeria</p>
-            </>
+            </div>
           </div>
-          <div className="second flex flex-col ml-40 gap-1 text-black">
-            <>
+          <div className="second flex flex-col ml-40 gap-7 text-black">
+            <div className="flex flex-col gap-1">
               <h3 className="font-medium text-[20px]">First Name</h3>
               <p className="font-normal text-[16px]">Toluwani</p>
-            </>
-            <>
+            </div>
+            <div className="flex flex-col gap-1">
               <h3 className="font-medium text-[20px]">Email Address</h3>
-              <p className="font-normal text-[16px]">toluayomide@gmail.com</p>
-            </>
-            <>
+              <p className="font-normal text-[16px] underline">toluayomide@gmail.com</p>
+            </div>
+            <div className="flex flex-col gap-1">
               <h3 className="font-medium text-[20px]">Country</h3>
               <p className="font-normal text-[16px]">Nigeria</p>
-            </>
+            </div>
           </div>
-          <div className="third flex flex-col ml-26 gap-1 text-black">
-            <>
+          <div className="third flex flex-col ml-26 gap-7 text-black">
+            <div className="flex flex-col gap-1">
               <h3 className="font-medium text-[20px]">First Name</h3>
               <p className="font-normal text-[16px]">Toluwani</p>
-            </>
-            <>
+            </div>
+            <div className="flex flex-col gap-1">
               <h3 className="font-medium text-[20px]">Email Address</h3>
-              <p className="font-normal text-[16px]">toluayomide@gmail.com</p>
-            </>
-            <>
+              <p className="font-normal text-[16px] underline">toluayomide@gmail.com</p>
+            </div>
+            <div className="flex flex-col gap-1">
               <h3 className="font-medium text-[20px]">Country</h3>
               <p className="font-normal text-[16px]">Nigeria</p>
-            </>
+            </div>
           </div>
         </div>
       </div>
