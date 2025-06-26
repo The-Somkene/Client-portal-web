@@ -7,11 +7,21 @@ function Meetings() {
    <nav className="bg-white flex flex-col gap-8 py-8 px-8 rounded-tr-xl rounded-tl-xl">
     <h1 className="text-xl font-bold">Add New Client</h1>
     <ul className="flex items-center justify-around">
+     <Link href="/newclient/clientinfo">
      <li className="hover:underline text-lg font-bold cursor-pointer text-gray-500">Client Info</li>
-     <li className="hover:underline text-lg font-bold cursor-pointer text-gray-500">Project Info</li>
+     </Link>
+    <Link href="/newclient/projectinfo">
+    <li className="hover:underline text-lg font-bold cursor-pointer text-gray-500">Project Info</li>
+    </Link>
+     <Link href="/newclient/milestones">
      <li className="hover:underline text-lg font-bold cursor-pointer text-gray-500">Milestone</li>
+     </Link>
+     <Link href="/newclient/deliverables">
      <li className="hover:underline text-lg font-bold cursor-pointer text-gray-500">Deliverables</li>
+     </Link>
+     <Link href="/newclient/meetings">
      <li className="hover:underline text-lg font-bold cursor-pointer text-gray-500">Meetings</li>
+     </Link>
     </ul>
    </nav>
 

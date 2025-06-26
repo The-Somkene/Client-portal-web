@@ -15,7 +15,7 @@ function RecentActivitiy() {
 
     <div className="text-sm space-y-2">
       <div className="flex flex-col gap-2 border border-[#543cda73] p-4 rounded">
-      <h1>You Marked Jam Fill App Project as Complete</h1>
+      <h1 className="font-bold">You Marked Jam Fill App Project as Complete</h1>
 
       <div className="flex justify-between items-center">
         <p className="text-gray-500">10 min ago</p>
@@ -24,7 +24,7 @@ function RecentActivitiy() {
       </div>
 
       <div className="flex flex-col gap-2 border border-[#543cda73] p-4 rounded">
-      <h1>Client ABC Made Payemnt</h1>
+      <h1 className="font-bold">Client ABC Made Payemnt</h1>
 
       <div className="flex justify-between items-center">
         <p className="text-gray-500">10 min ago</p>
@@ -33,7 +33,7 @@ function RecentActivitiy() {
       </div>
 
       <div className="flex flex-col gap-2 border border-[#543cda73] p-4 rounded">
-      <h1>Meeting Rescheduled by Sarah</h1>
+      <h1 className="font-bold">Meeting Rescheduled by Sarah</h1>
 
       <div className="flex justify-between items-center">
         <p className="text-gray-500">10 min ago</p>
@@ -42,7 +42,7 @@ function RecentActivitiy() {
       </div>
 
       <div className="flex flex-col gap-2 border border-[#543cda73] p-4 rounded">
-      <h1>Client ABC Cancelled the video call scheduled for 2pm today.</h1>
+      <h1 className="font-bold">Client ABC Cancelled the video call scheduled for 2pm today.</h1>
 
       <div className="flex justify-between items-center">
         <p className="text-gray-500">10 min ago</p>

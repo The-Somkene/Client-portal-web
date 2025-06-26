@@ -52,27 +52,23 @@ const SignInForm = () => {
             </label>
           </div>
 
+          <Link href="/dashboard">
           <button
             type="submit"
             className="w-full bg-indigo-700 text-white py-3 rounded-md hover:bg-indigo-800 transition"
           >
-            Sign up
+            Sign in
           </button>
-
-          <button
-            type="button"
-            className="w-full border py-3 rounded-md flex justify-center items-center gap-2"
-          >
-            <Image src="/icons8-google 1.svg" alt="Google" width={240} height={240} className="w-8 h-8" />
-            Sign up with Google
-          </button>
+          </Link>
 
           <p className="text-sm text-gray-600">
-            Already have an account?{' '}
-            <Link href="/login" className="text-indigo-700 font-medium hover:underline">
+            Don't have an account?{' '}
+            <Link href="/signup" className="text-indigo-700 font-medium hover:underline">
               Sign up
             </Link>
           </p>
+
+          <Link href="/dashboard">Dashboard</Link>
         </form>
       </div>
     </div>

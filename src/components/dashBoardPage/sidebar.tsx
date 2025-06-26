@@ -1,30 +1,42 @@
+"use client"
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-function Sidebar() {
+type SidebarProps = {
+  drawerOpen: boolean;
+  toggleSideBar: () => void;
+};
+
+function Sidebar({drawerOpen, toggleSideBar}: SidebarProps) {
+  const router = useRouter()
  return(
   <>
-  <aside className="w-[20rem] p-6 mx-4 flex flex-col space-y-6">
-    <div className="bg-black px-8 py-2 rounded-xl w-[20rem] flex items-center justify-center">
-      <Image src="/nexoris_logo_black.svg" alt="Nexoris Logo" width={100} height={100} />
+  <aside className={`fixed top-0 left-0 z-1000 w-[20rem] p-6 mr-3 h-full flex flex-col space-y-6 transform transition-transform duration-300 ${drawerOpen ? "translate-x-10" : "-translate-x-full"}`}>
+    
+    <div className="bg-black px-8 py-0 rounded-xl w-[20rem] flex items-center justify-center">
+      <Image src="/logo.png" alt="Nexoris Logo" width={120} height={120} />
     </div>
 
    <div className="bg-white w-[20rem] py-6 rounded-xl px-4 flex flex-col gap-4">
-    <div className="flex items-end justify-end">
+    <button onClick={toggleSideBar} className="flex items-end justify-end">
     <Image src="/Arrow - Up Circle.svg" alt="" width={30} height={30} />
-    </div>
+    </button>
   
     <nav className="flex flex-col space-y-4">
       <ul className="flex flex-col">
-        <li className="hover:bg-[#543CDA] flex items-center gap-4 px-4 py-4 rounded hover:text-white cursor-pointer text-[#543CDA] font-bold">
+       <Link href="/dashboard">
+       <li className="hover:bg-[#543CDA] flex items-center gap-4 px-4 py-4 rounded hover:text-white cursor-pointer text-[#543CDA] font-bold">
           <span><Image src="/dashboard-circle.svg" alt="" width={15} height={15} className="text-[#543CDA]"/></span>DashBoard
         </li>
+       </Link>
 
         <li className="hover:bg-[#543CDA] flex items-center gap-4 px-4 py-4 rounded hover:text-white cursor-pointer text-[#543CDA] font-bold">
         <span><Image src="/user-single.svg" alt="" width={15} height={15} /></span>Clients
         </li>
 
         <li className="hover:bg-[#543CDA] flex items-center gap-4 px-4 py-4 rounded hover:text-white cursor-pointer text-[#543CDA] font-bold">
-        <span><Image src="/search-dollar.svg" alt="" width={15} height={15} /></span>Projects
+        <span><Image src="/search-dollar.svg" alt="" width={15} height={15} className="text-[#543CDA]"/></span>Projects
         </li>
 
         <li className="hover:bg-[#543CDA] flex items-center gap-4 px-4 py-4 rounded hover:text-white cursor-pointer text-[#543CDA] font-bold">
@@ -64,7 +76,7 @@ function Sidebar() {
       </div>
 
       <div className="border border-red-400 px-4 py-1 rounded-xl">
-      <h1 className="hover:bg-[#543CDA] flex items-center gap-4 px-4 py-4 rounded hover:text-white cursor-pointer text-red-600 font-bold">
+      <h1 className="flex items-center gap-4 px-4 py-4 rounded hover:text-red-200 cursor-pointer text-red-600 font-bold">
         <span><Image src="/logout-1.png" alt="" width={20} height={20} /></span>Logout
         </h1>
       </div>
@@ -76,3 +88,6 @@ function Sidebar() {
  }
  
  export default Sidebar;
+
+
+ 
