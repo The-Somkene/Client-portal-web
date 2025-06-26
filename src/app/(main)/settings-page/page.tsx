@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Settings = () => {
   return (
-    <section className="mt-6 py-0">
+    <section className="mt-6">
       <p className="font-semibold text-[28px] text-black">Settings</p>
       <div className="box1 bg-white mt-6.5 px-10 py-8 rounded-[10px] border-l-10 border-l-[#543CDA]">
         <p className="font-medium text-lg text-black">Account Settings</p>
