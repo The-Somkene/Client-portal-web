@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 const Settings = () => {
   return (
-    <section className="mt-6">
+    <section className="mt-6 py-0">
       <p className="font-semibold text-[28px] text-black">Settings</p>
       <div className="box1 bg-white mt-6.5 px-10 py-8 rounded-[10px] border-l-10 border-l-[#543CDA]">
         <p className="font-medium text-lg text-black">Account Settings</p>
@@ -20,11 +22,36 @@ const Settings = () => {
           />
           {/* <label htmlFor="" className="text-[#543CDA] font-semibold text-[16px]">Two-Factor Authentication</label> */}
         </form>
-        <div className="switch-container">
-          <h1 className="text-[#543CDA] font-semibold text-[16px]">Two-Factor Authentication</h1>
+        <div className="flex justify-between switch-container mt-5.5">
+          <h1 className="text-[#543CDA] font-semibold text-[16px]">
+            Two-Factor Authentication
+          </h1>
           <label className="switch">
-            <input type="checkbox" className=""/>
+            <input
+              type="checkbox"
+              checked={true}
+              className="toggle border-[#543CDA] text-[#543CDA] bg-white checked:border-[#543CDA] checked:bg-[#543CDA] checked:text-white"
+            />
           </label>
+        </div>
+        <div className="delete-btn mt-9 rounded-[7px] hover:bg-red-500 hover:text-white cursor-pointer w-[180px] flex items-center gap-2.5 py-4.5 px-4.5 border border-red-400 text-[12px] font-normal text-[#C43131] group">
+          <span>
+            <Image
+              src="/delete-1.svg"
+              alt="Edit icon"
+              width={14}
+              height={14}
+              className="group-hover:hidden"
+            />
+            <Image
+              src="/delete-1-hover.svg"
+              alt="Edit icon"
+              width={14}
+              height={14}
+              className="hidden group-hover:block"
+            />
+          </span>
+          <p>Deactivate Account</p>
         </div>
       </div>
       <div className="box2 text-black bg-white mt-6.5 mb-32 px-10 py-8 rounded-[10px] border-l-10 border-l-[#543CDA]">
