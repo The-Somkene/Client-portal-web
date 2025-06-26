@@ -12,7 +12,7 @@ function Sidebar({drawerOpen, toggleSideBar}: SidebarProps) {
   const router = useRouter()
  return(
   <>
-  <aside className={`fixed top-0 left-0 z-1000 w-[20rem] p-6 mr-3 h-full flex flex-col space-y-6 transform transition-transform duration-300 ${drawerOpen ? "translate-x-10" : "-translate-x-full"}`}>
+  <aside className={`fixed top-0 left-0 z-1000 w-[20rem] p-6 mr-3 h-full flex flex-col space-y-6 transform transition-transform duration-300 ${drawerOpen ? "translate-x-0" : "-translate-x-full"}`}>
     
     <div className="bg-black px-8 py-0 rounded-xl w-[20rem] flex items-center justify-center">
       <Image src="/logo.png" alt="Nexoris Logo" width={120} height={120} />
