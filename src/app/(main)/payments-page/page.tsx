@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const statusStyles = {
   Pending: "text-[#F8A72D]",
@@ -19,9 +20,11 @@ const Payments = () => {
     <section className="mt-12">
       <div className="flex items-center gap-13.75 ">
         <h1 className="text-xl font-semibold text-black">Payments</h1>
+        <Link href="/create-invoice-page">
         <div className="border-none bg-[#543CDA] py-4 px-11.25 rounded-[7px] text-white cursor-pointer">
           <p className="font-normal text-[12px]">Create Invoice</p>
         </div>
+        </Link>
       </div>
       <div className="cards grid grid-cols-4 gap-1.75 mt-7.5">
         <div className="card1 bg-white pl-3.25 pr-13.75 py-3 rounded-[5px] border-l-6 border-l-[#543CDA]">
