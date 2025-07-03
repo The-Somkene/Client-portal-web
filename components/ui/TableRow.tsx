@@ -1,9 +1,15 @@
 "use client";
-import React, { useState, useRef } from "react";
-import Badge, { BadgeVariant } from "./Badge";
-import DeleteConfirmModal from "@/components/deliverables/detail/DeleteConfirmModal";
-import Image from "next/image";
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
+import DeleteConfirmModal from "@/components/ui/DeleteConfirmModal";
+// import Image from "next/image";
 import { usePathname } from 'next/navigation';
+import ActionsDropdown from "./ActionsDropdown";
+import { useActionsDropdownItems } from "@/utils/mockActionsDropdownData";
+import { useOverviewContext } from "@/components/clients/overview/OverviewContext";
+// import { useRouter } from "next/navigation";
+const DeliverablesBadge = dynamic(() => import("@/components/deliverables/Badge"), { ssr: false });
+const MeetingsBadge = dynamic(() => import("@/components/meetings/Badge"), { ssr: false });
 
 export interface TableRowData {
   columnOne: string;
@@ -24,12 +30,10 @@ interface TableRowProps {
 // const statusMap: Record<string, BadgeVariant> = ;
 
 const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewAction, onDeleteRow }) => {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-  // const [text1, setText1] = useState('');
-  // const [text2, setText2] = useState('');
-  const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>)
-  const menuRef = useRef<HTMLDivElement>(null);
+  // const router = useRouter();
+  const { setClientName } = useOverviewContext();
+  // const [statusMap, setStatusMap] = useState({} as Record<string, BadgeVariant>);
   const pathname = usePathname();
 
   // Keyboard accessibility for Deliverable cell
@@ -40,57 +44,43 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
     }
   };
 
-  // Handle menu open/close
-  const handleMenuClick = () => setMenuOpen((open) => !open);
-  const handleView = () => {
-    setMenuOpen(false);
-    onViewAction?.(row);
+  // Normalize status for badge variant
+  const normalizeStatus = (status: string) => {
+    const s = status.toLowerCase();
+    if (s === "pending approval" || s === "pending") return "pending";
+    if (s === "in progress" || s === "progress") return "progress";
+    if (s === "not started" || s === "notstarted") return "notstarted";
+    if (s === "upcoming") return "upcoming";
+    if (s === "held") return "held";
+    if (s === "cancelled" || s === "canceled") return "cancelled";
+    if (s === "approved") return "approved";
+    return "pending";
   };
 
-  // Modal close on outside click or Escape
-  React.useEffect(() => {
-    if (!showDelete) return;
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setShowDelete(false);
-    };
-    const handleClick = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setShowDelete(false);
-      }
-    };
-    if(pathname === "/meetings"){
-      // const arr = row.columnOne.split("\n");
-      // setText1(arr[0]);
-      // setText2(arr[1]);
-      setStatusMap({
-        Upcoming: "upcoming",
-        Held: "held",
-        Cancelled: "cancelled",
-      })
-    }
-    if(pathname === "/deliverables"){
-      setStatusMap({
-        Approved: "approved",
-        "Pending Approval": "pending",
-        "In Progress": "progress",
-        "Not Started": "notstarted",
-      })
-    }
-    document.addEventListener("keydown", handleKey);
-    document.addEventListener("mousedown", handleClick);
-    return () => {
-      document.removeEventListener("keydown", handleKey);
-      document.removeEventListener("mousedown", handleClick);
-    };
-  }, [showDelete, pathname/*, row.columnOne*/]);
-
-  const handleDelete = () => {
+  // Action handlers
+  const handleView = () => {
+    setClientName(row.columnThree || row.columnTwo || ""); // Use client name from row
+    // router.push("/clients/overview"); // Route to overview page
+    onViewAction?.(row);
+  };
+  // const handleEdit = () => {/* Add edit logic here */};
+  const handleDelete = () => setShowDelete(true);
+  const handleCancel = () => setShowDelete(true);
+  const handleConfirmDelete = () => {
     setShowDelete(false);
     if (onDeleteRow) onDeleteRow(row);
   };
 
+  // Get menu items for dropdown
+  const menuItems = useActionsDropdownItems({
+    onView: handleView,
+    onEdit: handleView,
+    onDelete: handleDelete,
+    onCancel: handleCancel,
+  });
+
   return (
-    <tr className="border-b border-[#E3DEFF] bg-white">
+    <tr className="border-b border-[#E3DEFF] bg-white mb-4 shadow-[1px_1px_2px_rgba(0,0,0,0.1)]">
       <td
         className="px-4 py-4 w-[260px] text-center align-middle font-poppins text-sm text-[#232323] cursor-pointer hover:underline focus:underline outline-none"
         tabIndex={0}
@@ -98,7 +88,7 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
         aria-label={`View details for ${row.columnOne}`}
         onClick={() => onDeliverableClick?.(row)}
         onKeyDown={handleDeliverableKey}
-        style={{ whiteSpace: "nowrap" }}
+        style={{ whiteSpace: "pre-line" }}
       >
         {row.columnOne}
       </td>
@@ -111,57 +101,21 @@ const TableRow: React.FC<TableRowProps> = ({ row, onDeliverableClick, onViewActi
       <td className="px-4 py-4 w-[200px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnFour}
       </td>
-      <td className="px-4 py-4 w-[160px] text-center align-middle">
-        <Badge variant={statusMap[row.columnFive] || pathname==="/deliverables"?"notstarted":"cancelled"}>{row.columnFive}</Badge>
+      <td className={`px-4 py-4 w-[160px] text-center align-middle ${pathname === "/clients"?"font-poppins text-sm text-[#232323]":""}`}>
+        {pathname === "/clients" ? (
+          <React.Fragment>{row.columnFive}</React.Fragment>
+        ) : pathname === "/meetings" ? (
+          <MeetingsBadge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</MeetingsBadge>
+        ) : (
+          <DeliverablesBadge variant={normalizeStatus(row.columnFive)}>{row.columnFive}</DeliverablesBadge>
+        )}
       </td>
       <td className="px-4 py-4 w-[140px] text-center align-middle font-poppins text-sm text-[#232323]" style={{ whiteSpace: "nowrap" }}>
         {row.columnSix}
       </td>
       <td className="cursor-pointer px-4 py-4 w-[120px] text-right align-middle relative">
-        <div ref={menuRef} className="inline-block">
-          <button
-            aria-label="More actions"
-            className="flex items-center justify-center w-8 h-8 rounded hover:bg-grey-300 focus:outline-none focus:ring-2 focus:ring-primary"
-            tabIndex={0}
-            onClick={handleMenuClick}
-          >
-            <span className="sr-only">More actions</span>
-            <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
-              <circle cx="4" cy="10" r="2" fill="#232427" />
-              <circle cx="10" cy="10" r="2" fill="#232427" />
-              <circle cx="16" cy="10" r="2" fill="#232427" />
-            </svg>
-          </button>
-          {menuOpen && (
-            <div className="absolute right-0 top-10 z-30 bg-white border border-[#E3DEFF] rounded-lg shadow-lg min-w-[160px] py-2 flex flex-col divide-y divide-[#E3DEFF]">
-              <button
-                className="flex items-center gap-2 px-4 py-3 text-[#5B2EDD] font-poppins font-medium text-base hover:bg-[#F7F5FF] focus:outline-none"
-                onClick={handleView}
-                tabIndex={0}
-              >
-                <Image src="/arrow-cursor.svg" alt="View" width={18} height={18} className="cursor-pointer"/>
-                View
-              </button>
-              <button
-                className="flex items-center gap-2 px-4 py-3 text-[#5B2EDD] font-poppins font-medium text-base hover:bg-[#F7F5FF] focus:outline-none"
-                onClick={handleView /* Add edit logic here */ }
-                tabIndex={0}
-              >
-                <Image src="/pencil--change-edit.svg" alt="Edit" width={18} height={18} className="cursor-pointer"/>
-                Edit
-              </button>
-              <button
-                className="flex items-center gap-2 px-4 py-3 text-red-600 font-poppins font-medium text-base hover:bg-[#F7F5FF] focus:outline-none"
-                onClick={() => setShowDelete(true)}
-                tabIndex={0}
-              >
-                {pathname==="/deliverables" && (<><Image src="/recycle-bin.svg" alt="Delete" width={18} height={18} className="cursor-pointer"/> Delete</>)}
-                {pathname==="/meetings" && (<><Image src="/cancel.svg" alt="Cancel" width={18} height={18} className="cursor-pointer"/>Cancle</>)}
-              </button>
-            </div>
-          )}
-          <DeleteConfirmModal open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleDelete} />
-        </div>
+        <ActionsDropdown items={menuItems} />
+        <DeleteConfirmModal title="Delete Row?" description="Are you sure you want to delete this row? This action cannot be undone." open={showDelete} onCancel={() => setShowDelete(false)} onConfirm={handleConfirmDelete} />
       </td>
     </tr>
   );
